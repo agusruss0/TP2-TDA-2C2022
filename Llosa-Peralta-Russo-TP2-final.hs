@@ -63,19 +63,7 @@ modulo (a, b) = sqrt(a^2 + b^2)
 distancia :: Complejo -> Complejo -> Float
 distancia z w = modulo (resta z w)
 
---2.3 Dividimos el problema en cuadrantes por el funcionamiento de "asin". Llamamos θ al resultado y fuimos sumando lo necesario en cada cuadrante. Entre los 4 cuadrantes se completan todas las posiblidades.
-{--argumento :: Complejo -> Float
-argumento z | cuadrante1 = θ
-            | cuadrante2 = (π/2) - θ 
-            | cuadrante3 = θ + π
-            |  otherwise = ((3*π/2)) - θ
-            where θ = asin (im z / modulo z)
-                  θ2 = acos (re z / modulo z)
-                  cuadrante1 = (im z >= 0 && re z > 0)
-                  cuadrante2 = (im z > 0 && re z <= 0)
-                  cuadrante3 = (im z <= 0 && re z < 0)
--- otherwise cubre las variantes pertenecientes al cuarto cuadrante.
---}
+--2.3 Dividimos el problema en cuadrantes por el funcionamiento de "acos". Llamamos θ al angulo obtenido calculada con su parte real, entonces planteamos los dos casos donde im z >= 0 o donde z<0, en el cual a 2π le restamos θ para obtener el argumento correspondien en los cuadrantes 3 y 4   
 argumento :: Complejo -> Float
 argumento z | im z >= 0 = θ
             | otherwise = 2*π - θ
